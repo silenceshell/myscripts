@@ -1,0 +1,9 @@
+{
+  "filename" : "test2.txt",
+  "table":
+  {
+    "lines" : "100",
+    "_commet_for_columes" : "colume type support BOOLEAN,BIGINT,DOUBLE,STRING,DATE,DATETIME,VARCHAR(len),INDEX,INTEGER(max) only.",
+    "columes":"INTEGER(12),STRING,DATETIME, NULL,DATE, VARCHAR(12),DATE, INDEX(101000000000001)"
+  }
+}

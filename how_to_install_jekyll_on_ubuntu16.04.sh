@@ -20,3 +20,5 @@ systemctl restart nginx
 git clone https://github.com/silenceshell/silenceshell.github.io.git
 cd silenceshell.github.io
 jekyll b
+
+

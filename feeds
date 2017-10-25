@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+    <head>
+        <title>QuiteRSS</title>
+        <dateModified>Wed Oct 25 16:31:38 2017</dateModified>
+    </head>
+    <body>
+        <outline text="iTimothy" type="rss" htmlUrl="https://xiaozhou.net/" xmlUrl="http://www.xiaozhou.net/atom.xml"/>
+        <outline text="腾讯">
+            <outline text="趣科技_腾讯科技" type="rss" htmlUrl="http://tech.qq.com/l/web/newtrends/newtrends.htm" xmlUrl="http://tech.qq.com/web/wht/qkj.xml"/>
+            <outline text="趋势报告_腾讯科技" type="rss" htmlUrl="http://tech.qq.com/l/web/newtrends/newtrends.htm" xmlUrl="http://tech.qq.com/web/Reporting/qsbg.xml"/>
+            <outline text="移动互联" type="rss" htmlUrl="http://tech.qq.com/l/ydhl/ydhlxw/ydhl.htm" xmlUrl="http://tech.qq.com/web/ydhl/ydhl.xml"/>
+            <outline text="IT业界_腾讯科技" type="rss" htmlUrl="http://tech.qq.com/l/web/newtrends/newtrends.htm" xmlUrl="http://tech.qq.com/web/it/telerss.xml"/>
+            <outline text="互联网_腾讯科技" type="rss" htmlUrl="http://tech.qq.com/l/web/newtrends/newtrends.htm" xmlUrl="http://tech.qq.com/web/webnews/rss_11.xml"/>
+        </outline>
+        <outline text="美团技术团队" type="rss" htmlUrl="https://tech.meituan.com/" xmlUrl="http://tech.meituan.com/atom.xml"/>
+        <outline text="Jark's Blog" type="rss" htmlUrl="http://wuchong.me/" xmlUrl="http://wuchong.me/atom.xml"/>
+        <outline text="董的博客" type="rss" htmlUrl="http://dongxicheng.org" xmlUrl="http://dongxicheng.org/feed/"/>
+        <outline text="阮一峰的网络日志" type="rss" htmlUrl="http://www.ruanyifeng.com/blog/" xmlUrl="http://www.ruanyifeng.com/blog/atom.xml"/>
+        <outline text="Hey! Linux." type="rss" htmlUrl="http://heylinux.com" xmlUrl="http://heylinux.com/feed"/>
+        <outline text="Debugo" type="rss" htmlUrl="http://debugo.com" xmlUrl="http://debugo.com/feed/"/>
+        <outline text="Zippera's blog" type="rss" htmlUrl="http://zipperary.com" xmlUrl="http://zipperary.com/atom.xml"/>
+        <outline text="粉丝日志" type="rss" htmlUrl="http://blog.fens.me" xmlUrl="http://blog.fens.me/feed/"/>
+        <outline text="Zlatan Eevee" type="rss" htmlUrl="http://ieevee.com/" xmlUrl="https://ieevee.com/feed.xml"/>
+        <outline text="ImportNew" type="rss" htmlUrl="http://www.importnew.com" xmlUrl="http://www.importnew.com/feed"/>
+        <outline text="joyfire 王乐珩" type="rss" htmlUrl="http://wangleheng.com" xmlUrl="http://wangleheng.com/feed/"/>
+        <outline text="zachary_OOM" type="rss" htmlUrl="http://blog.csdn.net/shifenglov" xmlUrl="http://blog.csdn.net/shifenglov/rss/list"/>
+        <outline text="酷 壳 - CoolShell.cn" type="rss" htmlUrl="https://coolshell.cn" xmlUrl="http://coolshell.cn/feed"/>
+        <outline text="我的站点" type="rss" htmlUrl="http://nanxiao.me" xmlUrl="http://nanxiao.me/feed/"/>
+        <outline text="Techzero" type="rss" htmlUrl="https://www.techzero.cn" xmlUrl="http://www.itechzero.com/feed/"/>
+        <outline text="anzhsoft的技术专栏" type="rss" htmlUrl="http://blog.csdn.net/anzhsoft2008" xmlUrl="http://blog.csdn.net/anzhsoft2008/rss/list"/>
+        <outline text="Cloudera Engineering Blog" type="rss" htmlUrl="http://blog.cloudera.com" xmlUrl="http://blog.cloudera.com/feed/"/>
+        <outline text="陈沙克日志" type="rss" htmlUrl="http://www.chenshake.com" xmlUrl="http://www.chenshake.com/feed/"/>
+        <outline text="micklf的博客" type="rss" htmlUrl="http://blog.csdn.net/micklf" xmlUrl="http://blog.csdn.net/micklf/rss/list"/>
+        <outline text="apple4us" type="rss" htmlUrl="http://apple4us.com/" xmlUrl="http://apple4us.com/feed"/>
+        <outline text="鸟窝" type="rss" htmlUrl="http://colobu.com/" xmlUrl="http://colobu.com/atom.xml"/>
+        <outline text="重来" type="rss" htmlUrl="http://blog.csdn.net/spacewalkman" xmlUrl="http://blog.csdn.net/spacewalkman/rss/list"/>
+        <outline text="摇摆少年梦的技术博客" type="rss" htmlUrl="http://blog.csdn.net/lovehuangjiaju" xmlUrl="http://blog.csdn.net/lovehuangjiaju/rss/list"/>
+        <outline text="Netfilter,iptables/OpenVPN/TCP guard:-(" type="rss" htmlUrl="http://blog.csdn.net/dog250" xmlUrl="http://blog.csdn.net/dog250/rss/list"/>
+        <outline text="Databricks" type="rss" htmlUrl="https://databricks.com" xmlUrl="https://databricks.com/feed"/>
+        <outline text="Kubernetes" type="rss" htmlUrl="http://blog.kubernetes.io/" xmlUrl="http://blog.kubernetes.io/feeds/posts/default"/>
+        <outline text="Solidot" type="rss" htmlUrl="http://www.solidot.org" xmlUrl="http://www.solidot.org/index.rss"/>
+        <outline text="容器技术爱好者" type="rss" htmlUrl="http://blog.csdn.net/horsefoot" xmlUrl="http://blog.csdn.net/horsefoot/rss/list"/>
+        <outline text="简单之美" type="rss" htmlUrl="http://shiyanjun.cn" xmlUrl="http://shiyanjun.cn/feed"/>
+        <outline text="Rock IT" type="rss" htmlUrl="https://rock-it.pl/" xmlUrl="http://rock-it.pl/rss"/>
+        <outline text="CodeG Blog" type="rss" htmlUrl="http://blog.codeg.cn/" xmlUrl="http://blog.codeg.cn/feed.xml"/>
+        <outline text="KiwenLau" type="rss" htmlUrl="https://kiwenlau.com/" xmlUrl="http://kiwenlau.com/atom.xml"/>
+        <outline text="Gopher beyond El[i]phants" type="rss" htmlUrl="https://mikespook.com" xmlUrl="https://mikespook.com/feed/"/>
+        <outline text="Active questions tagged go - Stack Overflow" type="rss" htmlUrl="https://stackoverflow.com/questions/tagged/?tagnames=go&amp;sort=active" xmlUrl="https://stackoverflow.com/feeds/tag/go"/>
+        <outline text="{ wido.me }" type="rss" htmlUrl="https://wido.me/" xmlUrl="https://wido.me/atom.xml"/>
+        <outline text="Vincent Bernat" type="rss" htmlUrl="https://vincent.bernat.im/en" xmlUrl="https://vincent.bernat.im/en/blog/atom.xml"/>
+        <outline text="天赋 无与伦比的坚持" type="rss" htmlUrl="http://perthcharles.github.com/" xmlUrl="http://perthcharles.github.io/atom.xml"/>
+        <outline text="漠然" type="rss" htmlUrl="https://mritd.me/" xmlUrl="https://mritd.me/feed.xml"/>
+        <outline text="The Go Programming Language Blog" type="rss" htmlUrl="//blog.golang.org/go1.9" xmlUrl="https://blog.golang.org/feed.atom"/>
+        <outline text="Go Design Patterns" type="rss" htmlUrl="http://www.godesignpatterns.com/" xmlUrl="http://www.godesignpatterns.com/feed.atom"/>
+        <outline text="Jeremy Cole" type="rss" htmlUrl="https://blog.jcole.us" xmlUrl="https://blog.jcole.us/feed/"/>
+        <outline text="Linux Performance" type="rss" htmlUrl="http://linuxperf.com" xmlUrl="http://linuxperf.com/?feed=rss2"/>
+        <outline text="vpsee.com" type="rss" htmlUrl="http://www.vpsee.com" xmlUrl="http://www.vpsee.com/feed/"/>
+        <outline text="杜屹东的博客" type="rss" htmlUrl="https://www.duyidong.com/" xmlUrl="https://www.duyidong.com/atom.xml"/>
+        <outline text="Sn0rt's Blog" type="rss" htmlUrl="http://linux323.tk" xmlUrl="http://linux323.tk/feed/"/>
+        <outline text="GitHub Engineering" type="rss" htmlUrl="https://githubengineering.com/" xmlUrl="https://githubengineering.com/atom.xml"/>
+        <outline text="Jethro Carr" type="rss" htmlUrl="https://www.jethrocarr.com" xmlUrl="https://www.jethrocarr.com/feed/"/>
+        <outline text="程序猿DD | 博客" type="rss" htmlUrl="http://blog.didispace.com/" xmlUrl="http://blog.didispace.com/atom.xml"/>
+    </body>
+</opml>

@@ -1,0 +1,318 @@
+etcd Version: 3.1.4
+
+Instance List:
+
+mn-0: 4bc7141c11bf71da
+mn-1: 8296553e8d2c027d
+sn-2: 60d080439b99d9ca
+
+Main Question: 
+
+mn-1 re-join etcd cluster at 05:51:08, but etcd cluster become stable at 05:51:22. Why does it takes 13s to select leader? Can it be improved?
+
+Operation:
+
+DOWN mn-1's interal interface at 05:50:49, and it triggers mn-1 reboot at 05:50:52. 
+UP mn-1's internal interface at 05:51:08. mn-1's etcd startup at 05:51:08.
+
+Event Analysis:
+
+1. Down mn-1's internal interface at 05:50:49, QM triggers mn-1 reboot at 05:50:52 as expected.
+
+	Line 3003: Mar 13 05:50:52 mn-1 quoratemonitor[1517]: qm: info: Voter node mn-0:1.1.1 is disconnected
+	Line 3004: Mar 13 05:50:52 mn-1 quoratemonitor[1517]: qm: info: Voter node mn-1:1.1.2 is connected
+	Line 3005: Mar 13 05:50:52 mn-1 quoratemonitor[1517]: qm: info: Voter node sn-2:1.1.3 is disconnected
+	Line 3006: Mar 13 05:50:52 mn-1 quoratemonitor[1517]: qm: info: System is not quorate
+	Line 3007: Mar 13 05:50:52 mn-1 quoratemonitor[1517]: qm: error: Quorate is lost, quoratemonitor exiting
+
+	Here, mn-1 starts a new election with term 152 before receiving SIGTERM after connection lost. It results in mn-1's term higher than mn-0's and sn-2's.
+
+	Line 4248: Mar 13 05:50:52 mn-1 etcd[813]: 8296553e8d2c027d is starting a new election at term 151
+	Line 4250: Mar 13 05:50:52 mn-1 etcd[813]: 8296553e8d2c027d became candidate at term 152
+	Line 4252: Mar 13 05:50:52 mn-1 etcd[813]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 152
+	Line 4254: Mar 13 05:50:52 mn-1 etcd[813]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 152
+	Line 4256: Mar 13 05:50:52 mn-1 etcd[813]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 152
+	Line 4258: Mar 13 05:50:52 mn-1 etcd[813]: raft.node: 8296553e8d2c027d lost leader 60d080439b99d9ca at term 152
+	Line 4260: Mar 13 05:50:52 mn-1 etcd[813]: received terminated signal, shutting down...
+
+	Then mn-1 goes down.
+
+	Till now, mn-1 down; mn-0 thinks leader is sn-2; sn-2 thinks leader is sn-2.
+	Record: mn-0 (term: 151, logterm: 151, ?) , mn-1 (term: 152, logterm: 151, index: 2602517), sn-2 (term: 151, logterm: 151, ?)
+
+2. UP mn-1's internal interface at 05:51:08. mn-1's etcd startup at 05:51:08.
+
+	Line 8627: Mar 13 05:51:08 mn-1 etcd[846]: etcd Version: 3.1.4
+	Line 8667: Mar 13 05:51:09 mn-1 etcd[846]: 8296553e8d2c027d became follower at term 152
+	Line 8691: Mar 13 05:51:09 mn-1 etcd[846]: peer 60d080439b99d9ca became active
+	Line 8694: Mar 13 05:51:09 mn-1 etcd[846]: peer 4bc7141c11bf71da became active
+
+	mn-0, sn-2 also detect mn-1 active.
+
+	Line 3596: Mar 13 05:51:10 mn-0 etcd[825]: peer 8296553e8d2c027d became active
+	Line 3285: Mar 13 05:51:09 sn-2 etcd[779]: peer 8296553e8d2c027d became active
+
+	Here, sn-2 receive mn-1's MsgAppResp with higher term. sn-2 update its term to 152.
+
+	Line 3287: Mar 13 05:51:09 sn-2 etcd[779]: 60d080439b99d9ca [term: 151] received a MsgAppResp message with higher term from 8296553e8d2c027d [term: 152]
+	Line 3288: Mar 13 05:51:09 sn-2 etcd[779]: 60d080439b99d9ca became follower at term 152
+	Line 3289: Mar 13 05:51:09 sn-2 etcd[779]: raft.node: 60d080439b99d9ca changed leader from 60d080439b99d9ca to 8296553e8d2c027d at term 152
+
+	But mn-0 doesn't receive MsgAppResp from mn-1, so it has no idea about leader switch.
+
+	Till now, mn-1 just in; mn-0 thinks leader is sn-2; sn-2 thinks leader is mn-1.
+	Record: mn-0 (term: 151, logterm: 151, ?) , mn-1 (term: 152, logterm: 151, index: 2602517), sn-2 (term: 152, logterm: 151, ?)
+
+3. mn-1 starts a new election with term 153, when it just finishes etcd's startup at 05:51:09.
+
+	Line 9009: Mar 13 05:51:09 mn-1 etcd[846]: 8296553e8d2c027d is starting a new election at term 152
+	Line 9010: Mar 13 05:51:09 mn-1 etcd[846]: 8296553e8d2c027d became candidate at term 153
+	Line 9011: Mar 13 05:51:09 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 153
+	Line 9012: Mar 13 05:51:09 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 153
+	Line 9013: Mar 13 05:51:09 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 153
+
+	But mn-0 and sn-2 ignore mn-1's MsgVote, due to lease is not expired.
+
+	Line 3605: Mar 13 05:51:10 mn-0 etcd[825]: 4bc7141c11bf71da [logterm: 151, index: 2603551, vote: 60d080439b99d9ca] ignored MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 151: lease is not expired (remaining ticks: 3)
+	Line 3294: Mar 13 05:51:10 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 151, index: 2603551, vote: 0] ignored MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 152: lease is not expired (remaining ticks: 3)
+
+	Till now, nothing changes, mn-1 thinks no leader in etcd cluster; mn-0 thinks leader is sn-2; sn-2 thinks leader is mn-1.
+	Record: mn-0 (term: 151, logterm: 151, index: 2603551) , mn-1 (term: 153, logterm: 151, index: 2602517), sn-2 (term: 152, logterm: 151, index: 2603551)
+
+4. mn-0 starts a new election with term 152 at 05:51:12, and it becomes leader with sn-2's vote.
+
+	Line 3624: Mar 13 05:51:12 mn-0 etcd[825]: 4bc7141c11bf71da is starting a new election at term 151
+	Line 3625: Mar 13 05:51:12 mn-0 etcd[825]: 4bc7141c11bf71da became candidate at term 152
+	Line 3626: Mar 13 05:51:12 mn-0 etcd[825]: 4bc7141c11bf71da received MsgVoteResp from 4bc7141c11bf71da at term 152
+	Line 3627: Mar 13 05:51:12 mn-0 etcd[825]: 4bc7141c11bf71da [logterm: 151, index: 2603551] sent MsgVote request to 8296553e8d2c027d at term 152
+	Line 3628: Mar 13 05:51:12 mn-0 etcd[825]: 4bc7141c11bf71da [logterm: 151, index: 2603551] sent MsgVote request to 60d080439b99d9ca at term 152
+	Line 3629: Mar 13 05:51:12 mn-0 etcd[825]: raft.node: 4bc7141c11bf71da lost leader 60d080439b99d9ca at term 152
+	Line 3630: Mar 13 05:51:12 mn-0 etcd[825]: 4bc7141c11bf71da received MsgVoteResp from 60d080439b99d9ca at term 152
+	Line 3631: Mar 13 05:51:12 mn-0 etcd[825]: 4bc7141c11bf71da [quorum:2] has received 2 MsgVoteResp votes and 0 vote rejections
+	Line 3632: Mar 13 05:51:12 mn-0 etcd[825]: 4bc7141c11bf71da became leader at term 152
+	Line 3633: Mar 13 05:51:12 mn-0 etcd[825]: raft.node: 4bc7141c11bf71da elected leader 4bc7141c11bf71da at term 152
+
+	sn-2 votes mn-0 at term 152.
+
+	Line 3315: Mar 13 05:51:11 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 151, index: 2603551, vote: 0] cast MsgVote for 4bc7141c11bf71da [logterm: 151, index: 2603551] at term 152
+	Line 3316: Mar 13 05:51:11 sn-2 etcd[779]: raft.node: 60d080439b99d9ca changed leader from 8296553e8d2c027d to 4bc7141c11bf71da at term 152
+
+	mn-1 ignores mn-0's vote request with lower term.
+
+	Line 9401: Mar 13 05:51:11 mn-1 etcd[846]: 8296553e8d2c027d [term: 153] ignored a MsgVote message with lower term from 4bc7141c11bf71da [term: 152]
+
+	Till now, mn-1 thinks no leader in etcd cluster; mn-0 thinks leader is mn-0; sn-2 thinks leader is mn-0.
+	Record: mn-0 (term: 152, logterm: 152, index: 2603551) , mn-1 (term: 153, logterm: 151, index: 2602517), sn-2 (term: 152, logterm: 152, index: 2603551)
+
+5. Just after mn-0 completes Event 4, mn-0 receives mn-1's MsgAppResp with higher term, leader changes.
+
+	Line 3634: Mar 13 05:51:12 mn-0 etcd[825]: 4bc7141c11bf71da [term: 152] received a MsgAppResp message with higher term from 8296553e8d2c027d [term: 153]
+	Line 3635: Mar 13 05:51:12 mn-0 etcd[825]: 4bc7141c11bf71da became follower at term 153
+	Line 3636: Mar 13 05:51:12 mn-0 etcd[825]: raft.node: 4bc7141c11bf71da changed leader from 4bc7141c11bf71da to 8296553e8d2c027d at term 153
+	Line 3637: Mar 13 05:51:12 mn-0 etcd[825]: 4bc7141c11bf71da [term: 153] ignored a MsgAppResp message with lower term from 60d080439b99d9ca [term: 152]
+
+	Till now, mn-1 thinks no leader in etcd cluster; mn-0 thinks leader is mn-1; sn-2 thinks leader is mn-0.
+	Record: mn-0 (term: 153, logterm: 152, index: 2603551) , mn-1 (term: 153, logterm: 151, index: 2602517), sn-2 (term: 152, logterm: 152, index: 2603551)
+
+
+6. mn-1 starts a new election with term 154 at 05:51:12. Situation here is same as Event 3.
+
+	Line 9425: Mar 13 05:51:12 mn-1 etcd[846]: 8296553e8d2c027d is starting a new election at term 153
+	Line 9426: Mar 13 05:51:12 mn-1 etcd[846]: 8296553e8d2c027d became candidate at term 154
+	Line 9427: Mar 13 05:51:12 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 154
+	Line 9428: Mar 13 05:51:12 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 154
+	Line 9429: Mar 13 05:51:12 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 154
+
+	Still mn-0 and sn-2 ignore mn-1's MsgVote, due to lease is not expired.
+
+	Line 3664: Mar 13 05:51:13 mn-0 etcd[825]: 4bc7141c11bf71da [logterm: 152, index: 2603552, vote: 0] ignored MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 153: lease is not expired (remaining ticks: 3)
+	Line 3350: Mar 13 05:51:12 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 152, index: 2603552, vote: 4bc7141c11bf71da] ignored MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 152: lease is not expired (remaining ticks: 2)
+
+	Till now, nothing changes, mn-1 thinks no leader in etcd cluster; mn-0 thinks leader is mn-1; sn-2 thinks leader is mn-0.
+	Record: mn-0 (term: 153, logterm: 152, index: 2603552) , mn-1 (term: 154, logterm: 151, index: 2602517), sn-2 (term: 152, logterm: 152, index: 2603552)
+
+7. sn-2 starts a new election with term 153 at 05:51:14, and it becomes leader with mn-0's vote. Situation here is similar with Event 4.
+
+	Line 3366: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca is starting a new election at term 152
+	Line 3367: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca became candidate at term 153
+	Line 3368: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca received MsgVoteResp from 60d080439b99d9ca at term 153
+	Line 3369: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 152, index: 2603552] sent MsgVote request to 4bc7141c11bf71da at term 153
+	Line 3370: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 152, index: 2603552] sent MsgVote request to 8296553e8d2c027d at term 153
+	Line 3371: Mar 13 05:51:14 sn-2 etcd[779]: raft.node: 60d080439b99d9ca lost leader 4bc7141c11bf71da at term 153
+	Line 3372: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca received MsgVoteResp from 4bc7141c11bf71da at term 153
+	Line 3373: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca [quorum:2] has received 2 MsgVoteResp votes and 0 vote rejections
+	Line 3374: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca became leader at term 153
+	Line 3375: Mar 13 05:51:14 sn-2 etcd[779]: raft.node: 60d080439b99d9ca elected leader 60d080439b99d9ca at term 153
+
+	mn-0 votes sn-2 at term 153.
+
+	Line 3685: Mar 13 05:51:14 mn-0 etcd[825]: 4bc7141c11bf71da [logterm: 152, index: 2603552, vote: 0] cast MsgVote for 60d080439b99d9ca [logterm: 152, index: 2603552] at term 153
+	Line 3686: Mar 13 05:51:14 mn-0 etcd[825]: raft.node: 4bc7141c11bf71da changed leader from 8296553e8d2c027d to 60d080439b99d9ca at term 153
+
+	mn-1 ignores sn-2's vote request with lower term.
+
+	Line 9454: Mar 13 05:51:13 mn-1 etcd[846]: 8296553e8d2c027d [term: 154] ignored a MsgVote message with lower term from 60d080439b99d9ca [term: 153]
+
+	Till now, mn-1 thinks no leader in etcd cluster; mn-0 thinks leader is sn-2; sn-2 thinks leader is sn-2.
+	Record: mn-0 (term: 153, logterm: 153, index: 2603552) , mn-1 (term: 154, logterm: 151, index: 2602517), sn-2 (term: 153, logterm: 153, index: 2603552)
+
+8. Just after sn-2 completes Event 7, sn-2 receives mn-1's MsgAppResp with higher term, leader changes.
+
+	Line 3376: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca [term: 153] received a MsgAppResp message with higher term from 8296553e8d2c027d [term: 154]
+	Line 3377: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca became follower at term 154
+	Line 3378: Mar 13 05:51:14 sn-2 etcd[779]: raft.node: 60d080439b99d9ca changed leader from 60d080439b99d9ca to 8296553e8d2c027d at term 154
+	Line 3379: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca [term: 154] ignored a MsgAppResp message with lower term from 4bc7141c11bf71da [term: 153]
+
+	Till now, mn-1 thinks no leader in etcd cluster; mn-0 thinks leader is sn-2; sn-2 thinks leader is mn-1.
+	Record: mn-0 (term: 153, logterm: 153, index: 2603552) , mn-1 (term: 154, logterm: 151, index: 2602517), sn-2 (term: 154, logterm: 153, index: 2603552)
+
+9. mn-1 starts a new election with term 155 at 05:51:14. Situation here is same as Event 3, 6.
+
+	Line 9456: Mar 13 05:51:14 mn-1 etcd[846]: 8296553e8d2c027d is starting a new election at term 154
+	Line 9457: Mar 13 05:51:14 mn-1 etcd[846]: 8296553e8d2c027d became candidate at term 155
+	Line 9458: Mar 13 05:51:14 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 155
+	Line 9459: Mar 13 05:51:14 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 155
+	Line 9460: Mar 13 05:51:14 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 155
+
+	Still mn-0 and sn-2 ignore mn-1's MsgVote, due to lease is not expired.
+
+	Line 3690: Mar 13 05:51:14 mn-0 etcd[825]: 4bc7141c11bf71da [logterm: 153, index: 2603553, vote: 60d080439b99d9ca] ignored MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 153: lease is not expired (remaining ticks: 5)
+	Line 3384: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 153, index: 2603553, vote: 0] ignored MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 154: lease is not expired (remaining ticks: 5)
+
+	Till now, nothing changes, mn-1 thinks no leader in etcd cluster; mn-0 thinks leader is sn-2; sn-2 thinks leader is mn-1.
+	Record: mn-0 (term: 153, logterm: 153, index: 2603553) , mn-1 (term: 155, logterm: 151, index: 2602517), sn-2 (term: 154, logterm: 153, index: 2603553)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	Summary for above events:
+
+	- mn-1 sends out MsgVote, mn-0 and sn-2 both receive and ignore, because lease is not expired.
+	- mn-1 sends out MsgVote, mn-0 and sn-2 both receive and ignore, so they won't update their local term to mn-1's higher term.
+	- When mn-0 or sn-2 starts an election,  they will easily agree with each other and select a leader. But this leader will immediately receive MsgAppResp from mn-1 with higher term, so this leader became follower and think leader is mn-1. But the other node who votes this leader has no idea about leader switch.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+10. mn-1 starts a new election with term 156 at 05:51:15. Here comes a little difference, mn-0 and sn-2 don't ignore mn-1's MsgVote this time.
+
+	Line 9483: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d is starting a new election at term 155
+	Line 9484: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d became candidate at term 156
+	Line 9485: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 156
+	Line 9486: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 156
+	Line 9487: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 156
+	Line 9488: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp rejection from 4bc7141c11bf71da at term 156
+	Line 9489: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d [quorum:2] has received 1 MsgVoteResp votes and 1 vote rejections
+	Line 9490: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp rejection from 60d080439b99d9ca at term 156
+	Line 9491: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d [quorum:2] has received 1 MsgVoteResp votes and 2 vote rejections
+	Line 9492: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d became follower at term 156
+
+	mn-0 receives mn-1's MsgVote and update its local term, but vetos mn-1.
+
+	Line 3720: Mar 13 05:51:16 mn-0 etcd[825]: 4bc7141c11bf71da [term: 153] received a MsgVote message with higher term from 8296553e8d2c027d [term: 156]
+	Line 3721: Mar 13 05:51:16 mn-0 etcd[825]: 4bc7141c11bf71da became follower at term 156
+	Line 3722: Mar 13 05:51:16 mn-0 etcd[825]: 4bc7141c11bf71da [logterm: 153, index: 2603553, vote: 0] rejected MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 156
+	Line 3723: Mar 13 05:51:16 mn-0 etcd[825]: raft.node: 4bc7141c11bf71da lost leader 60d080439b99d9ca at term 156
+
+	sn-2 receives mn-1's MsgVote and update its local term, but vetos mn-1.
+
+	Line 3464: Mar 13 05:51:16 sn-2 etcd[779]: 60d080439b99d9ca [term: 154] received a MsgVote message with higher term from 8296553e8d2c027d [term: 156]
+	Line 3465: Mar 13 05:51:16 sn-2 etcd[779]: 60d080439b99d9ca became follower at term 156
+	Line 3466: Mar 13 05:51:16 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 153, index: 2603553, vote: 0] rejected MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 156
+	Line 3467: Mar 13 05:51:16 sn-2 etcd[779]: raft.node: 60d080439b99d9ca lost leader 8296553e8d2c027d at term 156
+
+	Till now, all instances think itself a follower.
+	Record: mn-0 (term: 156, logterm: 153, index: 2603553) , mn-1 (term: 156, logterm: 151, index: 2602517), sn-2 (term: 156, logterm: 153, index: 2603553)
+
+11. mn-1 starts a new election with term 157 at 05:51:18. Situation here is same as Event 10.
+
+	Line 9518: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d is starting a new election at term 156
+	Line 9519: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d became candidate at term 157
+	Line 9520: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 157
+	Line 9521: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 157
+	Line 9522: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 157
+	Line 9523: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp rejection from 60d080439b99d9ca at term 157
+	Line 9524: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d [quorum:2] has received 1 MsgVoteResp votes and 1 vote rejections
+	Line 9525: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp rejection from 4bc7141c11bf71da at term 157
+	Line 9526: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d [quorum:2] has received 1 MsgVoteResp votes and 2 vote rejections
+	Line 9527: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d became follower at term 157
+
+	mn-0 receives mn-1's MsgVote and update its local term, but vetos mn-1.
+
+	Line 3781: Mar 13 05:51:19 mn-0 etcd[825]: 4bc7141c11bf71da [term: 156] received a MsgVote message with higher term from 8296553e8d2c027d [term: 157]
+	Line 3782: Mar 13 05:51:19 mn-0 etcd[825]: 4bc7141c11bf71da became follower at term 157
+	Line 3783: Mar 13 05:51:19 mn-0 etcd[825]: 4bc7141c11bf71da [logterm: 153, index: 2603553, vote: 0] rejected MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 157
+
+	sn-2 receives mn-1's MsgVote and update its local term, but vetos mn-1.
+
+	Line 3501: Mar 13 05:51:18 sn-2 etcd[779]: 60d080439b99d9ca [term: 156] received a MsgVote message with higher term from 8296553e8d2c027d [term: 157]
+	Line 3502: Mar 13 05:51:18 sn-2 etcd[779]: 60d080439b99d9ca became follower at term 157
+	Line 3503: Mar 13 05:51:18 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 153, index: 2603553, vote: 0] rejected MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 157
+
+	Till now, nothing changes, all instances think itself a follower.
+	Record: mn-0 (term: 157, logterm: 153, index: 2603553) , mn-1 (term: 157, logterm: 151, index: 2602517), sn-2 (term: 157, logterm: 153, index: 2603553)
+
+12. mn-1 starts a new election with term 158 at 05:51:20. Situation here is same as Event 10, 11.
+
+	Line 9827: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d is starting a new election at term 157
+	Line 9828: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d became candidate at term 158
+	Line 9829: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 158
+	Line 9830: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 158
+	Line 9831: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 158
+	Line 9832: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp rejection from 60d080439b99d9ca at term 158
+	Line 9833: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d [quorum:2] has received 1 MsgVoteResp votes and 1 vote rejections
+	Line 9834: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp rejection from 4bc7141c11bf71da at term 158
+	Line 9835: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d [quorum:2] has received 1 MsgVoteResp votes and 2 vote rejections
+	Line 9836: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d became follower at term 158
+
+	mn-0 receives mn-1's MsgVote and update its local term, but vetos mn-1.
+
+	Line 3810: Mar 13 05:51:20 mn-0 etcd[825]: 4bc7141c11bf71da [term: 157] received a MsgVote message with higher term from 8296553e8d2c027d [term: 158]
+	Line 3811: Mar 13 05:51:20 mn-0 etcd[825]: 4bc7141c11bf71da became follower at term 158
+	Line 3812: Mar 13 05:51:20 mn-0 etcd[825]: 4bc7141c11bf71da [logterm: 153, index: 2603553, vote: 0] rejected MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 158
+
+	sn-2 receives mn-1's MsgVote and update its local term, but vetos mn-1.
+
+	Line 3519: Mar 13 05:51:20 sn-2 etcd[779]: 60d080439b99d9ca [term: 157] received a MsgVote message with higher term from 8296553e8d2c027d [term: 158]
+	Line 3520: Mar 13 05:51:20 sn-2 etcd[779]: 60d080439b99d9ca became follower at term 158
+	Line 3521: Mar 13 05:51:20 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 153, index: 2603553, vote: 0] rejected MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 158
+
+	Till now, nothing changes, all instances think itself a follower.
+	Record: mn-0 (term: 158, logterm: 153, index: 2603553) , mn-1 (term: 158, logterm: 151, index: 2602517), sn-2 (term: 158, logterm: 153, index: 2603553)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	Summary for above events:
+
+	- mn-1 sends out MsgVote, mn-0 and sn-2 both receive and update their local term to mn-1's higer term, but veto mn-1.
+
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+13. mn-0 starts a new election with term 159 at 05:51:22. Finally, they reach an aggreement and select mn-0 as leader.
+
+	Line 4026: Mar 13 05:51:22 mn-0 etcd[825]: 4bc7141c11bf71da is starting a new election at term 158
+	Line 4028: Mar 13 05:51:22 mn-0 etcd[825]: 4bc7141c11bf71da became candidate at term 159
+	Line 4030: Mar 13 05:51:22 mn-0 etcd[825]: 4bc7141c11bf71da received MsgVoteResp from 4bc7141c11bf71da at term 159
+	Line 4032: Mar 13 05:51:22 mn-0 etcd[825]: 4bc7141c11bf71da [logterm: 153, index: 2603553] sent MsgVote request to 60d080439b99d9ca at term 159
+	Line 4034: Mar 13 05:51:22 mn-0 etcd[825]: 4bc7141c11bf71da [logterm: 153, index: 2603553] sent MsgVote request to 8296553e8d2c027d at term 159
+	Line 4036: Mar 13 05:51:22 mn-0 etcd[825]: 4bc7141c11bf71da received MsgVoteResp from 60d080439b99d9ca at term 159
+	Line 4038: Mar 13 05:51:22 mn-0 etcd[825]: 4bc7141c11bf71da [quorum:2] has received 2 MsgVoteResp votes and 0 vote rejections
+	Line 4040: Mar 13 05:51:22 mn-0 etcd[825]: 4bc7141c11bf71da became leader at term 159
+	Line 4042: Mar 13 05:51:22 mn-0 etcd[825]: raft.node: 4bc7141c11bf71da elected leader 4bc7141c11bf71da at term 159
+
+	mn-1 receives mn-0's MsgVote and update its local term, and sends a yes vote to mn-0.
+
+	Line 9867: Mar 13 05:51:22 mn-1 etcd[846]: 8296553e8d2c027d [term: 158] received a MsgVote message with higher term from 4bc7141c11bf71da [term: 159]
+	Line 9868: Mar 13 05:51:22 mn-1 etcd[846]: 8296553e8d2c027d became follower at term 159
+	Line 9869: Mar 13 05:51:22 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517, vote: 0] cast MsgVote for 4bc7141c11bf71da [logterm: 153, index: 2603553] at term 159
+	Line 9870: Mar 13 05:51:22 mn-1 etcd[846]: raft.node: 8296553e8d2c027d elected leader 4bc7141c11bf71da at term 159 
+
+	sn-2 receives mn-0's MsgVote and update its local term, and sends a yes vote to mn-0.
+
+	Line 3666: Mar 13 05:51:22 sn-2 etcd[779]: 60d080439b99d9ca [term: 158] received a MsgVote message with higher term from 4bc7141c11bf71da [term: 159]
+	Line 3667: Mar 13 05:51:22 sn-2 etcd[779]: 60d080439b99d9ca became follower at term 159
+	Line 3668: Mar 13 05:51:22 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 153, index: 2603553, vote: 0] cast MsgVote for 4bc7141c11bf71da [logterm: 153, index: 2603553] at term 159
+	Line 3669: Mar 13 05:51:22 sn-2 etcd[779]: got unexpected response error (etcdserver: request timed out)
+	Line 3670: Mar 13 05:51:22 sn-2 etcd[779]: raft.node: 60d080439b99d9ca elected leader 4bc7141c11bf71da at term 159
+
+	Till now, all instances select mn-0 as leader.
+	Record: mn-0 (term: 159, logterm: 153, index: 2603553) , mn-1 (term: 159, logterm: 151, index: 2602517), sn-2 (term: 159, logterm: 153, index: 2603553)
+

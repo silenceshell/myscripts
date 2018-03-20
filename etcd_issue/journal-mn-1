@@ -1,0 +1,289 @@
+	Line 4248: Mar 13 05:50:52 mn-1 etcd[813]: 8296553e8d2c027d is starting a new election at term 151
+	Line 4250: Mar 13 05:50:52 mn-1 etcd[813]: 8296553e8d2c027d became candidate at term 152
+	Line 4252: Mar 13 05:50:52 mn-1 etcd[813]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 152
+	Line 4254: Mar 13 05:50:52 mn-1 etcd[813]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 152
+	Line 4256: Mar 13 05:50:52 mn-1 etcd[813]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 152
+	Line 4258: Mar 13 05:50:52 mn-1 etcd[813]: raft.node: 8296553e8d2c027d lost leader 60d080439b99d9ca at term 152
+	Line 4260: Mar 13 05:50:52 mn-1 etcd[813]: received terminated signal, shutting down...
+	Line 4262: Mar 13 05:50:52 mn-1 etcd[813]: skipped leadership transfer for stopping non-leader member
+	Line 4264: Mar 13 05:50:52 mn-1 etcd[813]: got unexpected response error (etcdserver: server stopped)
+	Line 4266: Mar 13 05:50:52 mn-1 etcd[813]: stopping peer 4bc7141c11bf71da...
+	Line 4268: Mar 13 05:50:52 mn-1 etcd[813]: closed the TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 writer)
+	Line 4270: Mar 13 05:50:52 mn-1 etcd[813]: stopped streaming with peer 4bc7141c11bf71da (writer)
+	Line 4272: Mar 13 05:50:52 mn-1 etcd[813]: closed the TCP streaming connection with peer 4bc7141c11bf71da (stream Message writer)
+	Line 4274: Mar 13 05:50:52 mn-1 etcd[813]: stopped streaming with peer 4bc7141c11bf71da (writer)
+	Line 4276: Mar 13 05:50:52 mn-1 etcd[813]: stopped HTTP pipelining with peer 4bc7141c11bf71da
+	Line 4278: Mar 13 05:50:52 mn-1 etcd[813]: lost the TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 reader)
+	Line 4280: Mar 13 05:50:52 mn-1 etcd[813]: failed to read 4bc7141c11bf71da on stream MsgApp v2 (net/http: request canceled)
+	Line 4282: Mar 13 05:50:52 mn-1 etcd[813]: peer 4bc7141c11bf71da became inactive
+	Line 4284: Mar 13 05:50:52 mn-1 etcd[813]: stopped streaming with peer 4bc7141c11bf71da (stream MsgApp v2 reader)
+	Line 4286: Mar 13 05:50:52 mn-1 etcd[813]: lost the TCP streaming connection with peer 4bc7141c11bf71da (stream Message reader)
+	Line 4288: Mar 13 05:50:52 mn-1 etcd[813]: stopped streaming with peer 4bc7141c11bf71da (stream Message reader)
+	Line 4290: Mar 13 05:50:52 mn-1 etcd[813]: stopped peer 4bc7141c11bf71da
+	Line 4292: Mar 13 05:50:52 mn-1 etcd[813]: stopping peer 60d080439b99d9ca...
+	Line 4294: Mar 13 05:50:52 mn-1 etcd[813]: closed the TCP streaming connection with peer 60d080439b99d9ca (stream MsgApp v2 writer)
+	Line 4296: Mar 13 05:50:52 mn-1 etcd[813]: stopped streaming with peer 60d080439b99d9ca (writer)
+	Line 4298: Mar 13 05:50:52 mn-1 etcd[813]: closed the TCP streaming connection with peer 60d080439b99d9ca (stream Message writer)
+	Line 4300: Mar 13 05:50:52 mn-1 etcd[813]: stopped streaming with peer 60d080439b99d9ca (writer)
+	Line 4302: Mar 13 05:50:52 mn-1 etcd[813]: stopped HTTP pipelining with peer 60d080439b99d9ca
+	Line 4304: Mar 13 05:50:52 mn-1 etcd[813]: lost the TCP streaming connection with peer 60d080439b99d9ca (stream MsgApp v2 reader)
+	Line 4306: Mar 13 05:50:52 mn-1 etcd[813]: failed to read 60d080439b99d9ca on stream MsgApp v2 (net/http: request canceled)
+	Line 4308: Mar 13 05:50:52 mn-1 etcd[813]: peer 60d080439b99d9ca became inactive
+	Line 4310: Mar 13 05:50:52 mn-1 etcd[813]: stopped streaming with peer 60d080439b99d9ca (stream MsgApp v2 reader)
+	Line 4312: Mar 13 05:50:52 mn-1 etcd[813]: lost the TCP streaming connection with peer 60d080439b99d9ca (stream Message reader)
+	Line 4314: Mar 13 05:50:52 mn-1 etcd[813]: stopped streaming with peer 60d080439b99d9ca (stream Message reader)
+	Line 4316: Mar 13 05:50:52 mn-1 etcd[813]: stopped peer 60d080439b99d9ca
+	Line 8614: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_ADVERTISE_CLIENT_URLS=http://192.168.1.14:2379
+	Line 8615: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_DATA_DIR=/mnt/etcd/rcp20.etcd
+	Line 8616: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_ELECTION_TIMEOUT=1500
+	Line 8617: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_HEARTBEAT_INTERVAL=300
+	Line 8618: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_INITIAL_ADVERTISE_PEER_URLS=http://192.168.1.14:2380
+	Line 8619: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_INITIAL_CLUSTER=mn-0=http://mn-0.local:2380,mn-1=http://mn-1.local:2380,sn-2=http://sn-2.local:2380
+	Line 8620: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_INITIAL_CLUSTER_STATE=existing
+	Line 8621: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_INITIAL_CLUSTER_TOKEN=rcp20
+	Line 8622: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_LISTEN_CLIENT_URLS=http://192.168.1.14:2379,http://127.0.0.1:2379
+	Line 8623: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_LISTEN_PEER_URLS=http://192.168.1.14:2380
+	Line 8624: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_MAX_SNAPSHOTS=1
+	Line 8625: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_MAX_WALS=1
+	Line 8626: Mar 13 05:51:08 mn-1 etcd[846]: recognized and used environment variable ETCD_NAME=mn-1
+	Line 8627: Mar 13 05:51:08 mn-1 etcd[846]: etcd Version: 3.1.4
+	Line 8628: Mar 13 05:51:08 mn-1 etcd[846]: Git SHA: 4e1824f
+	Line 8629: Mar 13 05:51:08 mn-1 etcd[846]: Go Version: go1.9.2
+	Line 8630: Mar 13 05:51:08 mn-1 etcd[846]: Go OS/Arch: linux/amd64
+	Line 8631: Mar 13 05:51:08 mn-1 etcd[846]: setting maximum number of CPUs to 4, total number of available CPUs is 4
+	Line 8632: Mar 13 05:51:08 mn-1 etcd[846]: the server is already initialized as member before, starting as etcd member...
+	Line 8633: Mar 13 05:51:08 mn-1 etcd[846]: listening for peers on http://192.168.1.14:2380
+	Line 8634: Mar 13 05:51:08 mn-1 etcd[846]: listening for client requests on 127.0.0.1:2379
+	Line 8635: Mar 13 05:51:08 mn-1 etcd[846]: listening for client requests on 192.168.1.14:2379
+	Line 8636: Mar 13 05:51:08 mn-1 etcd[846]: recovered store from snapshot at index 2595521
+	Line 8637: Mar 13 05:51:08 mn-1 etcd[846]: name = mn-1
+	Line 8638: Mar 13 05:51:08 mn-1 etcd[846]: data dir = /mnt/etcd/rcp20.etcd
+	Line 8639: Mar 13 05:51:08 mn-1 etcd[846]: member dir = /mnt/etcd/rcp20.etcd/member
+	Line 8640: Mar 13 05:51:08 mn-1 etcd[846]: heartbeat = 300ms
+	Line 8641: Mar 13 05:51:08 mn-1 etcd[846]: election = 1500ms
+	Line 8642: Mar 13 05:51:08 mn-1 etcd[846]: snapshot count = 10000
+	Line 8643: Mar 13 05:51:08 mn-1 etcd[846]: advertise client URLs = http://192.168.1.14:2379
+	Line 8666: Mar 13 05:51:09 mn-1 etcd[846]: restarting member 8296553e8d2c027d in cluster d89ecb0dff10fcd4 at commit index 2602517
+	Line 8667: Mar 13 05:51:09 mn-1 etcd[846]: 8296553e8d2c027d became follower at term 152
+	Line 8668: Mar 13 05:51:09 mn-1 etcd[846]: newRaft 8296553e8d2c027d [peers: [4bc7141c11bf71da,60d080439b99d9ca,8296553e8d2c027d], term: 152, commit: 2602517, applied: 2595521, lastindex: 2602517, lastterm: 151]
+	Line 8669: Mar 13 05:51:09 mn-1 etcd[846]: enabled capabilities for version 3.1
+	Line 8670: Mar 13 05:51:09 mn-1 etcd[846]: added member 4bc7141c11bf71da [http://mn-0.local:2380] to cluster d89ecb0dff10fcd4 from store
+	Line 8671: Mar 13 05:51:09 mn-1 etcd[846]: added member 60d080439b99d9ca [http://sn-2.local:2380] to cluster d89ecb0dff10fcd4 from store
+	Line 8672: Mar 13 05:51:09 mn-1 etcd[846]: added member 8296553e8d2c027d [http://mn-1.local:2380] to cluster d89ecb0dff10fcd4 from store
+	Line 8673: Mar 13 05:51:09 mn-1 etcd[846]: set the cluster version to 3.1 from store
+	Line 8674: Mar 13 05:51:09 mn-1 etcd[846]: starting peer 4bc7141c11bf71da...
+	Line 8675: Mar 13 05:51:09 mn-1 etcd[846]: started HTTP pipelining with peer 4bc7141c11bf71da
+	Line 8676: Mar 13 05:51:09 mn-1 etcd[846]: started streaming with peer 4bc7141c11bf71da (writer)
+	Line 8677: Mar 13 05:51:09 mn-1 etcd[846]: started streaming with peer 4bc7141c11bf71da (writer)
+	Line 8678: Mar 13 05:51:09 mn-1 etcd[846]: started peer 4bc7141c11bf71da
+	Line 8679: Mar 13 05:51:09 mn-1 etcd[846]: added peer 4bc7141c11bf71da
+	Line 8680: Mar 13 05:51:09 mn-1 etcd[846]: starting peer 60d080439b99d9ca...
+	Line 8681: Mar 13 05:51:09 mn-1 etcd[846]: started HTTP pipelining with peer 60d080439b99d9ca
+	Line 8682: Mar 13 05:51:09 mn-1 etcd[846]: started streaming with peer 4bc7141c11bf71da (stream MsgApp v2 reader)
+	Line 8683: Mar 13 05:51:09 mn-1 etcd[846]: started streaming with peer 4bc7141c11bf71da (stream Message reader)
+	Line 8684: Mar 13 05:51:09 mn-1 etcd[846]: started streaming with peer 60d080439b99d9ca (writer)
+	Line 8685: Mar 13 05:51:09 mn-1 etcd[846]: started streaming with peer 60d080439b99d9ca (writer)
+	Line 8686: Mar 13 05:51:09 mn-1 etcd[846]: started peer 60d080439b99d9ca
+	Line 8687: Mar 13 05:51:09 mn-1 etcd[846]: added peer 60d080439b99d9ca
+	Line 8688: Mar 13 05:51:09 mn-1 etcd[846]: starting server... [version: 3.1.4, cluster version: 3.1]
+	Line 8689: Mar 13 05:51:09 mn-1 etcd[846]: started streaming with peer 60d080439b99d9ca (stream MsgApp v2 reader)
+	Line 8690: Mar 13 05:51:09 mn-1 etcd[846]: started streaming with peer 60d080439b99d9ca (stream Message reader)
+	Line 8691: Mar 13 05:51:09 mn-1 etcd[846]: peer 60d080439b99d9ca became active
+	Line 8692: Mar 13 05:51:09 mn-1 etcd[846]: established a TCP streaming connection with peer 60d080439b99d9ca (stream Message writer)
+	Line 8693: Mar 13 05:51:09 mn-1 etcd[846]: established a TCP streaming connection with peer 60d080439b99d9ca (stream MsgApp v2 writer)
+	Line 8694: Mar 13 05:51:09 mn-1 etcd[846]: peer 4bc7141c11bf71da became active
+	Line 8695: Mar 13 05:51:09 mn-1 etcd[846]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 writer)
+	Line 8696: Mar 13 05:51:09 mn-1 etcd[846]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream Message writer)
+	Line 8697: Mar 13 05:51:09 mn-1 etcd[846]: established a TCP streaming connection with peer 60d080439b99d9ca (stream MsgApp v2 reader)
+	Line 8698: Mar 13 05:51:09 mn-1 etcd[846]: established a TCP streaming connection with peer 60d080439b99d9ca (stream Message reader)
+	Line 8699: Mar 13 05:51:09 mn-1 etcd[846]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 reader)
+	Line 8700: Mar 13 05:51:09 mn-1 etcd[846]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream Message reader)
+	Line 9009: Mar 13 05:51:09 mn-1 etcd[846]: 8296553e8d2c027d is starting a new election at term 152
+	Line 9010: Mar 13 05:51:09 mn-1 etcd[846]: 8296553e8d2c027d became candidate at term 153
+	Line 9011: Mar 13 05:51:09 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 153
+	Line 9012: Mar 13 05:51:09 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 153
+	Line 9013: Mar 13 05:51:09 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 153
+	Line 9401: Mar 13 05:51:11 mn-1 etcd[846]: 8296553e8d2c027d [term: 153] ignored a MsgVote message with lower term from 4bc7141c11bf71da [term: 152]
+	Line 9425: Mar 13 05:51:12 mn-1 etcd[846]: 8296553e8d2c027d is starting a new election at term 153
+	Line 9426: Mar 13 05:51:12 mn-1 etcd[846]: 8296553e8d2c027d became candidate at term 154
+	Line 9427: Mar 13 05:51:12 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 154
+	Line 9428: Mar 13 05:51:12 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 154
+	Line 9429: Mar 13 05:51:12 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 154
+	Line 9454: Mar 13 05:51:13 mn-1 etcd[846]: 8296553e8d2c027d [term: 154] ignored a MsgVote message with lower term from 60d080439b99d9ca [term: 153]
+	Line 9456: Mar 13 05:51:14 mn-1 etcd[846]: 8296553e8d2c027d is starting a new election at term 154
+	Line 9457: Mar 13 05:51:14 mn-1 etcd[846]: 8296553e8d2c027d became candidate at term 155
+	Line 9458: Mar 13 05:51:14 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 155
+	Line 9459: Mar 13 05:51:14 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 155
+	Line 9460: Mar 13 05:51:14 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 155
+	Line 9483: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d is starting a new election at term 155
+	Line 9484: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d became candidate at term 156
+	Line 9485: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 156
+	Line 9486: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 156
+	Line 9487: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 156
+	Line 9488: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp rejection from 4bc7141c11bf71da at term 156
+	Line 9489: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d [quorum:2] has received 1 MsgVoteResp votes and 1 vote rejections
+	Line 9490: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp rejection from 60d080439b99d9ca at term 156
+	Line 9491: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d [quorum:2] has received 1 MsgVoteResp votes and 2 vote rejections
+	Line 9492: Mar 13 05:51:15 mn-1 etcd[846]: 8296553e8d2c027d became follower at term 156
+	Line 9506: Mar 13 05:51:17 mn-1 etcd[846]: publish error: etcdserver: request timed out
+	Line 9518: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d is starting a new election at term 156
+	Line 9519: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d became candidate at term 157
+	Line 9520: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 157
+	Line 9521: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 157
+	Line 9522: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 157
+	Line 9523: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp rejection from 60d080439b99d9ca at term 157
+	Line 9524: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d [quorum:2] has received 1 MsgVoteResp votes and 1 vote rejections
+	Line 9525: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp rejection from 4bc7141c11bf71da at term 157
+	Line 9526: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d [quorum:2] has received 1 MsgVoteResp votes and 2 vote rejections
+	Line 9527: Mar 13 05:51:18 mn-1 etcd[846]: 8296553e8d2c027d became follower at term 157
+	Line 9827: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d is starting a new election at term 157
+	Line 9828: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d became candidate at term 158
+	Line 9829: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp from 8296553e8d2c027d at term 158
+	Line 9830: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 4bc7141c11bf71da at term 158
+	Line 9831: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517] sent MsgVote request to 60d080439b99d9ca at term 158
+	Line 9832: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp rejection from 60d080439b99d9ca at term 158
+	Line 9833: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d [quorum:2] has received 1 MsgVoteResp votes and 1 vote rejections
+	Line 9834: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d received MsgVoteResp rejection from 4bc7141c11bf71da at term 158
+	Line 9835: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d [quorum:2] has received 1 MsgVoteResp votes and 2 vote rejections
+	Line 9836: Mar 13 05:51:20 mn-1 etcd[846]: 8296553e8d2c027d became follower at term 158
+	Line 9867: Mar 13 05:51:22 mn-1 etcd[846]: 8296553e8d2c027d [term: 158] received a MsgVote message with higher term from 4bc7141c11bf71da [term: 159]
+	Line 9868: Mar 13 05:51:22 mn-1 etcd[846]: 8296553e8d2c027d became follower at term 159
+	Line 9869: Mar 13 05:51:22 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 151, index: 2602517, vote: 0] cast MsgVote for 4bc7141c11bf71da [logterm: 153, index: 2603553] at term 159
+	Line 9870: Mar 13 05:51:22 mn-1 etcd[846]: raft.node: 8296553e8d2c027d elected leader 4bc7141c11bf71da at term 159
+	Line 9871: Mar 13 05:51:22 mn-1 etcd[846]: ready to serve client requests
+	Line 9876: Mar 13 05:51:22 mn-1 etcd[846]: published {Name:mn-1 ClientURLs:[http://192.168.1.14:2379]} to cluster d89ecb0dff10fcd4
+	Line 9877: Mar 13 05:51:22 mn-1 etcd[846]: ready to serve client requests
+	Line 9889: Mar 13 05:51:22 mn-1 etcd[846]: serving insecure client requests on 192.168.1.14:2379, this is strongly discouraged!
+	Line 9897: Mar 13 05:51:22 mn-1 etcd[846]: serving insecure client requests on 127.0.0.1:2379, this is strongly discouraged!
+	Line 11237: Mar 13 05:51:28 mn-1 etcd[846]: start to snapshot (applied: 2605522, lastsnap: 2595521)
+	Line 11238: Mar 13 05:51:28 mn-1 etcd[846]: saved snapshot at index 2605522
+	Line 11239: Mar 13 05:51:28 mn-1 etcd[846]: compacted raft log at 2600522
+	Line 11421: Mar 13 05:51:30 mn-1 etcd[846]: 8296553e8d2c027d [term: 159] received a MsgVote message with higher term from 60d080439b99d9ca [term: 160]
+	Line 11422: Mar 13 05:51:30 mn-1 etcd[846]: 8296553e8d2c027d became follower at term 160
+	Line 11423: Mar 13 05:51:30 mn-1 etcd[846]: 8296553e8d2c027d [logterm: 159, index: 2606114, vote: 0] cast MsgVote for 60d080439b99d9ca [logterm: 159, index: 2606114] at term 160
+	Line 11424: Mar 13 05:51:30 mn-1 etcd[846]: raft.node: 8296553e8d2c027d lost leader 4bc7141c11bf71da at term 160
+	Line 11425: Mar 13 05:51:30 mn-1 etcd[846]: raft.node: 8296553e8d2c027d elected leader 60d080439b99d9ca at term 160
+	Line 11443: Mar 13 05:51:31 mn-1 etcd[846]: lost the TCP streaming connection with peer 4bc7141c11bf71da (stream Message reader)
+	Line 11444: Mar 13 05:51:31 mn-1 etcd[846]: failed to read 4bc7141c11bf71da on stream Message (unexpected EOF)
+	Line 11445: Mar 13 05:51:31 mn-1 etcd[846]: peer 4bc7141c11bf71da became inactive
+	Line 11446: Mar 13 05:51:31 mn-1 etcd[846]: lost the TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 reader)
+	Line 12582: Mar 13 05:51:37 mn-1 etcd[846]: lost the TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 writer)
+	Line 12583: Mar 13 05:51:37 mn-1 etcd[846]: lost the TCP streaming connection with peer 4bc7141c11bf71da (stream Message writer)
+	Line 12714: Mar 13 05:51:39 mn-1 etcd[846]: purged file /mnt/etcd/rcp20.etcd/member/snap/0000000000000097-0000000000279ac1.snap successfully
+	Line 12929: Mar 13 05:51:44 mn-1 etcd[846]: health check for peer 4bc7141c11bf71da could not connect: dial tcp: lookup mn-0.local on 10.56.126.31:53: dial udp 10.56.126.31:53: i/o timeout
+	Line 13133: Mar 13 05:51:49 mn-1 etcd[846]: health check for peer 4bc7141c11bf71da could not connect: dial tcp: lookup mn-0.local on 10.56.126.31:53: dial udp 10.56.126.31:53: i/o timeout
+	Line 13361: Mar 13 05:51:54 mn-1 etcd[846]: health check for peer 4bc7141c11bf71da could not connect: dial tcp: lookup mn-0.local on 10.56.126.31:53: dial udp 10.56.126.31:53: i/o timeout
+	Line 13579: Mar 13 05:51:59 mn-1 etcd[846]: health check for peer 4bc7141c11bf71da could not connect: dial tcp: lookup mn-0.local on 10.56.126.31:53: dial udp 10.56.126.31:53: i/o timeout
+	Line 13787: Mar 13 05:52:04 mn-1 etcd[846]: peer 4bc7141c11bf71da became active
+	Line 13788: Mar 13 05:52:04 mn-1 etcd[846]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 reader)
+	Line 13789: Mar 13 05:52:04 mn-1 etcd[846]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream Message reader)
+	Line 13794: Mar 13 05:52:04 mn-1 etcd[846]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 writer)
+	Line 13795: Mar 13 05:52:04 mn-1 etcd[846]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream Message writer)
+	Line 13807: Mar 13 05:52:04 mn-1 etcd[846]: health check for peer 4bc7141c11bf71da could not connect: dial tcp: lookup mn-0.local on 10.56.126.31:53: dial udp 10.56.126.31:53: i/o timeout
+	Line 14126: Mar 13 05:52:10 mn-1 etcd[846]: start to snapshot (applied: 2615523, lastsnap: 2605522)
+	Line 14131: Mar 13 05:52:10 mn-1 etcd[846]: saved snapshot at index 2615523
+	Line 14132: Mar 13 05:52:10 mn-1 etcd[846]: compacted raft log at 2610523
+	Line 19501: Mar 13 05:52:39 mn-1 etcd[846]: purged file /mnt/etcd/rcp20.etcd/member/snap/000000000000009f-000000000027c1d2.snap successfully
+	Line 21217: Mar 13 05:54:05 mn-1 etcd[846]: start to snapshot (applied: 2625525, lastsnap: 2615523)
+	Line 21218: Mar 13 05:54:05 mn-1 etcd[846]: saved snapshot at index 2625525
+	Line 21219: Mar 13 05:54:05 mn-1 etcd[846]: compacted raft log at 2620525
+	Line 21351: Mar 13 05:54:09 mn-1 etcd[846]: purged file /mnt/etcd/rcp20.etcd/member/snap/00000000000000a0-000000000027e8e3.snap successfully
+	Line 22489: Mar 13 05:54:18 mn-1 etcd[846]: received terminated signal, shutting down...
+	Line 22490: Mar 13 05:54:18 mn-1 etcd[846]: skipped leadership transfer for stopping non-leader member
+	Line 22491: Mar 13 05:54:18 mn-1 etcd[846]: got unexpected response error (etcdserver: server stopped)
+	Line 22492: Mar 13 05:54:18 mn-1 etcd[846]: stopping peer 4bc7141c11bf71da...
+	Line 22493: Mar 13 05:54:19 mn-1 etcd[846]: closed the TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 writer)
+	Line 22494: Mar 13 05:54:19 mn-1 etcd[846]: stopped streaming with peer 4bc7141c11bf71da (writer)
+	Line 22495: Mar 13 05:54:19 mn-1 etcd[846]: closed the TCP streaming connection with peer 4bc7141c11bf71da (stream Message writer)
+	Line 22496: Mar 13 05:54:19 mn-1 etcd[846]: stopped streaming with peer 4bc7141c11bf71da (writer)
+	Line 22497: Mar 13 05:54:19 mn-1 etcd[846]: stopped HTTP pipelining with peer 4bc7141c11bf71da
+	Line 22498: Mar 13 05:54:19 mn-1 etcd[846]: lost the TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 reader)
+	Line 22499: Mar 13 05:54:19 mn-1 etcd[846]: failed to read 4bc7141c11bf71da on stream MsgApp v2 (net/http: request canceled)
+	Line 22500: Mar 13 05:54:19 mn-1 etcd[846]: peer 4bc7141c11bf71da became inactive
+	Line 22501: Mar 13 05:54:19 mn-1 etcd[846]: stopped streaming with peer 4bc7141c11bf71da (stream MsgApp v2 reader)
+	Line 22502: Mar 13 05:54:19 mn-1 etcd[846]: lost the TCP streaming connection with peer 4bc7141c11bf71da (stream Message reader)
+	Line 22503: Mar 13 05:54:19 mn-1 etcd[846]: stopped streaming with peer 4bc7141c11bf71da (stream Message reader)
+	Line 22504: Mar 13 05:54:19 mn-1 etcd[846]: stopped peer 4bc7141c11bf71da
+	Line 22505: Mar 13 05:54:19 mn-1 etcd[846]: stopping peer 60d080439b99d9ca...
+	Line 22506: Mar 13 05:54:19 mn-1 etcd[846]: closed the TCP streaming connection with peer 60d080439b99d9ca (stream MsgApp v2 writer)
+	Line 22507: Mar 13 05:54:19 mn-1 etcd[846]: stopped streaming with peer 60d080439b99d9ca (writer)
+	Line 22508: Mar 13 05:54:19 mn-1 etcd[846]: failed to process raft message (raft: stopped)
+	Line 22509: Mar 13 05:54:19 mn-1 etcd[846]: closed the TCP streaming connection with peer 60d080439b99d9ca (stream Message writer)
+	Line 22510: Mar 13 05:54:19 mn-1 etcd[846]: stopped streaming with peer 60d080439b99d9ca (writer)
+	Line 22511: Mar 13 05:54:19 mn-1 etcd[846]: stopped HTTP pipelining with peer 60d080439b99d9ca
+	Line 22512: Mar 13 05:54:19 mn-1 etcd[846]: lost the TCP streaming connection with peer 60d080439b99d9ca (stream MsgApp v2 reader)
+	Line 22513: Mar 13 05:54:19 mn-1 etcd[846]: stopped streaming with peer 60d080439b99d9ca (stream MsgApp v2 reader)
+	Line 22514: Mar 13 05:54:19 mn-1 etcd[846]: lost the TCP streaming connection with peer 60d080439b99d9ca (stream Message reader)
+	Line 22515: Mar 13 05:54:19 mn-1 etcd[846]: stopped streaming with peer 60d080439b99d9ca (stream Message reader)
+	Line 22516: Mar 13 05:54:19 mn-1 etcd[846]: stopped peer 60d080439b99d9ca
+	Line 28096: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_ADVERTISE_CLIENT_URLS=http://192.168.1.14:2379
+	Line 28097: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_DATA_DIR=/mnt/etcd/rcp20.etcd
+	Line 28098: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_ELECTION_TIMEOUT=1500
+	Line 28099: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_HEARTBEAT_INTERVAL=300
+	Line 28100: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_INITIAL_ADVERTISE_PEER_URLS=http://192.168.1.14:2380
+	Line 28101: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_INITIAL_CLUSTER=mn-0=http://mn-0.local:2380,mn-1=http://mn-1.local:2380,sn-2=http://sn-2.local:2380
+	Line 28102: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_INITIAL_CLUSTER_STATE=existing
+	Line 28103: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_INITIAL_CLUSTER_TOKEN=rcp20
+	Line 28104: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_LISTEN_CLIENT_URLS=http://192.168.1.14:2379,http://127.0.0.1:2379
+	Line 28105: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_LISTEN_PEER_URLS=http://192.168.1.14:2380
+	Line 28106: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_MAX_SNAPSHOTS=1
+	Line 28107: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_MAX_WALS=1
+	Line 28108: Mar 13 05:54:37 mn-1 etcd[869]: recognized and used environment variable ETCD_NAME=mn-1
+	Line 28109: Mar 13 05:54:37 mn-1 etcd[869]: etcd Version: 3.1.4
+	Line 28110: Mar 13 05:54:37 mn-1 etcd[869]: Git SHA: 4e1824f
+	Line 28111: Mar 13 05:54:37 mn-1 etcd[869]: Go Version: go1.9.2
+	Line 28112: Mar 13 05:54:37 mn-1 etcd[869]: Go OS/Arch: linux/amd64
+	Line 28113: Mar 13 05:54:37 mn-1 etcd[869]: setting maximum number of CPUs to 4, total number of available CPUs is 4
+	Line 28114: Mar 13 05:54:37 mn-1 etcd[869]: the server is already initialized as member before, starting as etcd member...
+	Line 28115: Mar 13 05:54:37 mn-1 etcd[869]: listening for peers on http://192.168.1.14:2380
+	Line 28116: Mar 13 05:54:37 mn-1 etcd[869]: listening for client requests on 127.0.0.1:2379
+	Line 28117: Mar 13 05:54:37 mn-1 etcd[869]: listening for client requests on 192.168.1.14:2379
+	Line 28121: Mar 13 05:54:37 mn-1 etcd[869]: recovered store from snapshot at index 2625525
+	Line 28122: Mar 13 05:54:37 mn-1 etcd[869]: name = mn-1
+	Line 28123: Mar 13 05:54:37 mn-1 etcd[869]: data dir = /mnt/etcd/rcp20.etcd
+	Line 28124: Mar 13 05:54:37 mn-1 etcd[869]: member dir = /mnt/etcd/rcp20.etcd/member
+	Line 28125: Mar 13 05:54:37 mn-1 etcd[869]: heartbeat = 300ms
+	Line 28126: Mar 13 05:54:37 mn-1 etcd[869]: election = 1500ms
+	Line 28127: Mar 13 05:54:37 mn-1 etcd[869]: snapshot count = 10000
+	Line 28128: Mar 13 05:54:37 mn-1 etcd[869]: advertise client URLs = http://192.168.1.14:2379
+	Line 28208: Mar 13 05:54:38 mn-1 etcd[869]: restarting member 8296553e8d2c027d in cluster d89ecb0dff10fcd4 at commit index 2626307
+	Line 28209: Mar 13 05:54:38 mn-1 etcd[869]: 8296553e8d2c027d became follower at term 160
+	Line 28210: Mar 13 05:54:38 mn-1 etcd[869]: newRaft 8296553e8d2c027d [peers: [4bc7141c11bf71da,60d080439b99d9ca,8296553e8d2c027d], term: 160, commit: 2626307, applied: 2625525, lastindex: 2626307, lastterm: 160]
+	Line 28211: Mar 13 05:54:38 mn-1 etcd[869]: enabled capabilities for version 3.1
+	Line 28212: Mar 13 05:54:38 mn-1 etcd[869]: added member 4bc7141c11bf71da [http://mn-0.local:2380] to cluster d89ecb0dff10fcd4 from store
+	Line 28213: Mar 13 05:54:38 mn-1 etcd[869]: added member 60d080439b99d9ca [http://sn-2.local:2380] to cluster d89ecb0dff10fcd4 from store
+	Line 28214: Mar 13 05:54:38 mn-1 etcd[869]: added member 8296553e8d2c027d [http://mn-1.local:2380] to cluster d89ecb0dff10fcd4 from store
+	Line 28215: Mar 13 05:54:38 mn-1 etcd[869]: set the cluster version to 3.1 from store
+	Line 28299: Mar 13 05:54:38 mn-1 etcd[869]: starting peer 4bc7141c11bf71da...
+	Line 28300: Mar 13 05:54:38 mn-1 etcd[869]: started HTTP pipelining with peer 4bc7141c11bf71da
+	Line 28301: Mar 13 05:54:38 mn-1 etcd[869]: started streaming with peer 4bc7141c11bf71da (writer)
+	Line 28305: Mar 13 05:54:38 mn-1 etcd[869]: started streaming with peer 4bc7141c11bf71da (writer)
+	Line 28307: Mar 13 05:54:38 mn-1 etcd[869]: started peer 4bc7141c11bf71da
+	Line 28308: Mar 13 05:54:38 mn-1 etcd[869]: added peer 4bc7141c11bf71da
+	Line 28309: Mar 13 05:54:38 mn-1 etcd[869]: starting peer 60d080439b99d9ca...
+	Line 28310: Mar 13 05:54:38 mn-1 etcd[869]: started HTTP pipelining with peer 60d080439b99d9ca
+	Line 28311: Mar 13 05:54:38 mn-1 etcd[869]: started streaming with peer 4bc7141c11bf71da (stream MsgApp v2 reader)
+	Line 28312: Mar 13 05:54:38 mn-1 etcd[869]: started peer 60d080439b99d9ca
+	Line 28313: Mar 13 05:54:38 mn-1 etcd[869]: added peer 60d080439b99d9ca
+	Line 28314: Mar 13 05:54:38 mn-1 etcd[869]: starting server... [version: 3.1.4, cluster version: 3.1]
+	Line 28315: Mar 13 05:54:38 mn-1 etcd[869]: started streaming with peer 60d080439b99d9ca (stream Message reader)
+	Line 28316: Mar 13 05:54:38 mn-1 etcd[869]: started streaming with peer 4bc7141c11bf71da (stream Message reader)
+	Line 28317: Mar 13 05:54:38 mn-1 etcd[869]: started streaming with peer 60d080439b99d9ca (writer)
+	Line 28318: Mar 13 05:54:38 mn-1 etcd[869]: started streaming with peer 60d080439b99d9ca (writer)
+	Line 28319: Mar 13 05:54:38 mn-1 etcd[869]: started streaming with peer 60d080439b99d9ca (stream MsgApp v2 reader)
+	Line 28320: Mar 13 05:54:38 mn-1 etcd[869]: peer 60d080439b99d9ca became active
+	Line 28321: Mar 13 05:54:38 mn-1 etcd[869]: established a TCP streaming connection with peer 60d080439b99d9ca (stream Message writer)
+	Line 28324: Mar 13 05:54:38 mn-1 etcd[869]: peer 4bc7141c11bf71da became active
+	Line 28325: Mar 13 05:54:38 mn-1 etcd[869]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream Message writer)
+	Line 28326: Mar 13 05:54:38 mn-1 etcd[869]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 writer)
+	Line 28328: Mar 13 05:54:38 mn-1 etcd[869]: established a TCP streaming connection with peer 60d080439b99d9ca (stream MsgApp v2 writer)
+	Line 28329: Mar 13 05:54:38 mn-1 etcd[869]: raft.node: 8296553e8d2c027d elected leader 60d080439b99d9ca at term 160
+	Line 28335: Mar 13 05:54:38 mn-1 etcd[869]: published {Name:mn-1 ClientURLs:[http://192.168.1.14:2379]} to cluster d89ecb0dff10fcd4
+	Line 28336: Mar 13 05:54:38 mn-1 etcd[869]: ready to serve client requests
+	Line 28337: Mar 13 05:54:38 mn-1 etcd[869]: ready to serve client requests
+	Line 28346: Mar 13 05:54:38 mn-1 etcd[869]: serving insecure client requests on 127.0.0.1:2379, this is strongly discouraged!
+	Line 28347: Mar 13 05:54:38 mn-1 etcd[869]: serving insecure client requests on 192.168.1.14:2379, this is strongly discouraged!
+	Line 28402: Mar 13 05:54:38 mn-1 etcd[869]: established a TCP streaming connection with peer 60d080439b99d9ca (stream Message reader)
+	Line 28403: Mar 13 05:54:38 mn-1 etcd[869]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream Message reader)
+	Line 28404: Mar 13 05:54:38 mn-1 etcd[869]: established a TCP streaming connection with peer 60d080439b99d9ca (stream MsgApp v2 reader)
+	Line 28405: Mar 13 05:54:38 mn-1 etcd[869]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 reader)

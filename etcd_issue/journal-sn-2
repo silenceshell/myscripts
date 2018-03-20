@@ -1,0 +1,127 @@
+	Line 2198: Mar 13 05:50:27 sn-2 etcd[779]: start to snapshot (applied: 2601195, lastsnap: 2591194)
+	Line 2199: Mar 13 05:50:27 sn-2 etcd[779]: saved snapshot at index 2601195
+	Line 2200: Mar 13 05:50:27 sn-2 etcd[779]: compacted raft log at 2596195
+	Line 3113: Mar 13 05:50:52 sn-2 etcd[779]: purged file /mnt/etcd/rcp20.etcd/member/snap/0000000000000097-00000000002789da.snap successfully
+	Line 3121: Mar 13 05:50:54 sn-2 etcd[779]: lost the TCP streaming connection with peer 8296553e8d2c027d (stream MsgApp v2 reader)
+	Line 3122: Mar 13 05:50:54 sn-2 etcd[779]: failed to read 8296553e8d2c027d on stream MsgApp v2 (read tcp 192.168.1.12:60806->192.168.1.14:2380: i/o timeout)
+	Line 3123: Mar 13 05:50:54 sn-2 etcd[779]: peer 8296553e8d2c027d became inactive
+	Line 3129: Mar 13 05:50:54 sn-2 etcd[779]: lost the TCP streaming connection with peer 8296553e8d2c027d (stream Message reader)
+	Line 3170: Mar 13 05:50:57 sn-2 etcd[779]: lost the TCP streaming connection with peer 8296553e8d2c027d (stream MsgApp v2 writer)
+	Line 3235: Mar 13 05:51:03 sn-2 etcd[779]: lost the TCP streaming connection with peer 8296553e8d2c027d (stream Message writer)
+	Line 3285: Mar 13 05:51:09 sn-2 etcd[779]: peer 8296553e8d2c027d became active
+	Line 3286: Mar 13 05:51:09 sn-2 etcd[779]: established a TCP streaming connection with peer 8296553e8d2c027d (stream Message reader)
+	Line 3287: Mar 13 05:51:09 sn-2 etcd[779]: 60d080439b99d9ca [term: 151] received a MsgAppResp message with higher term from 8296553e8d2c027d [term: 152]
+	Line 3288: Mar 13 05:51:09 sn-2 etcd[779]: 60d080439b99d9ca became follower at term 152
+	Line 3289: Mar 13 05:51:09 sn-2 etcd[779]: raft.node: 60d080439b99d9ca changed leader from 60d080439b99d9ca to 8296553e8d2c027d at term 152
+	Line 3290: Mar 13 05:51:09 sn-2 etcd[779]: established a TCP streaming connection with peer 8296553e8d2c027d (stream MsgApp v2 reader)
+	Line 3291: Mar 13 05:51:09 sn-2 etcd[779]: established a TCP streaming connection with peer 8296553e8d2c027d (stream Message writer)
+	Line 3292: Mar 13 05:51:09 sn-2 etcd[779]: established a TCP streaming connection with peer 8296553e8d2c027d (stream MsgApp v2 writer)
+	Line 3294: Mar 13 05:51:10 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 151, index: 2603551, vote: 0] ignored MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 152: lease is not expired (remaining ticks: 3)
+	Line 3315: Mar 13 05:51:11 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 151, index: 2603551, vote: 0] cast MsgVote for 4bc7141c11bf71da [logterm: 151, index: 2603551] at term 152
+	Line 3316: Mar 13 05:51:11 sn-2 etcd[779]: raft.node: 60d080439b99d9ca changed leader from 8296553e8d2c027d to 4bc7141c11bf71da at term 152
+	Line 3350: Mar 13 05:51:12 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 152, index: 2603552, vote: 4bc7141c11bf71da] ignored MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 152: lease is not expired (remaining ticks: 2)
+	Line 3366: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca is starting a new election at term 152
+	Line 3367: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca became candidate at term 153
+	Line 3368: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca received MsgVoteResp from 60d080439b99d9ca at term 153
+	Line 3369: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 152, index: 2603552] sent MsgVote request to 4bc7141c11bf71da at term 153
+	Line 3370: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 152, index: 2603552] sent MsgVote request to 8296553e8d2c027d at term 153
+	Line 3371: Mar 13 05:51:14 sn-2 etcd[779]: raft.node: 60d080439b99d9ca lost leader 4bc7141c11bf71da at term 153
+	Line 3372: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca received MsgVoteResp from 4bc7141c11bf71da at term 153
+	Line 3373: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca [quorum:2] has received 2 MsgVoteResp votes and 0 vote rejections
+	Line 3374: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca became leader at term 153
+	Line 3375: Mar 13 05:51:14 sn-2 etcd[779]: raft.node: 60d080439b99d9ca elected leader 60d080439b99d9ca at term 153
+	Line 3376: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca [term: 153] received a MsgAppResp message with higher term from 8296553e8d2c027d [term: 154]
+	Line 3377: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca became follower at term 154
+	Line 3378: Mar 13 05:51:14 sn-2 etcd[779]: raft.node: 60d080439b99d9ca changed leader from 60d080439b99d9ca to 8296553e8d2c027d at term 154
+	Line 3379: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca [term: 154] ignored a MsgAppResp message with lower term from 4bc7141c11bf71da [term: 153]
+	Line 3384: Mar 13 05:51:14 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 153, index: 2603553, vote: 0] ignored MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 154: lease is not expired (remaining ticks: 5)
+	Line 3464: Mar 13 05:51:16 sn-2 etcd[779]: 60d080439b99d9ca [term: 154] received a MsgVote message with higher term from 8296553e8d2c027d [term: 156]
+	Line 3465: Mar 13 05:51:16 sn-2 etcd[779]: 60d080439b99d9ca became follower at term 156
+	Line 3466: Mar 13 05:51:16 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 153, index: 2603553, vote: 0] rejected MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 156
+	Line 3467: Mar 13 05:51:16 sn-2 etcd[779]: raft.node: 60d080439b99d9ca lost leader 8296553e8d2c027d at term 156
+	Line 3488: Mar 13 05:51:17 sn-2 etcd[779]: got unexpected response error (etcdserver: request timed out)
+	Line 3501: Mar 13 05:51:18 sn-2 etcd[779]: 60d080439b99d9ca [term: 156] received a MsgVote message with higher term from 8296553e8d2c027d [term: 157]
+	Line 3502: Mar 13 05:51:18 sn-2 etcd[779]: 60d080439b99d9ca became follower at term 157
+	Line 3503: Mar 13 05:51:18 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 153, index: 2603553, vote: 0] rejected MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 157
+	Line 3505: Mar 13 05:51:19 sn-2 etcd[779]: got unexpected response error (etcdserver: request timed out) [merged 16 repeated lines in 1.53s]
+	Line 3507: Mar 13 05:51:19 sn-2 etcd[779]: etcdserver: request timed out, possibly due to previous leader failure
+	Line 3519: Mar 13 05:51:20 sn-2 etcd[779]: 60d080439b99d9ca [term: 157] received a MsgVote message with higher term from 8296553e8d2c027d [term: 158]
+	Line 3520: Mar 13 05:51:20 sn-2 etcd[779]: 60d080439b99d9ca became follower at term 158
+	Line 3521: Mar 13 05:51:20 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 153, index: 2603553, vote: 0] rejected MsgVote from 8296553e8d2c027d [logterm: 151, index: 2602517] at term 158
+	Line 3527: Mar 13 05:51:21 sn-2 etcd[779]: etcdserver: request timed out, possibly due to previous leader failure [merged 9 repeated lines in 1.94s]
+	Line 3666: Mar 13 05:51:22 sn-2 etcd[779]: 60d080439b99d9ca [term: 158] received a MsgVote message with higher term from 4bc7141c11bf71da [term: 159]
+	Line 3667: Mar 13 05:51:22 sn-2 etcd[779]: 60d080439b99d9ca became follower at term 159
+	Line 3668: Mar 13 05:51:22 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 153, index: 2603553, vote: 0] cast MsgVote for 4bc7141c11bf71da [logterm: 153, index: 2603553] at term 159
+	Line 3669: Mar 13 05:51:22 sn-2 etcd[779]: got unexpected response error (etcdserver: request timed out)
+	Line 3670: Mar 13 05:51:22 sn-2 etcd[779]: raft.node: 60d080439b99d9ca elected leader 4bc7141c11bf71da at term 159
+	Line 3836: Mar 13 05:51:23 sn-2 etcd[779]: etcdserver: request timed out, possibly due to previous leader failure [merged 4 repeated lines in 2s]
+	Line 5905: Mar 13 05:51:31 sn-2 etcd[779]: 60d080439b99d9ca [term 159] received MsgTimeoutNow from 4bc7141c11bf71da and starts an election to get leadership.
+	Line 5906: Mar 13 05:51:31 sn-2 etcd[779]: 60d080439b99d9ca became candidate at term 160
+	Line 5907: Mar 13 05:51:31 sn-2 etcd[779]: 60d080439b99d9ca received MsgVoteResp from 60d080439b99d9ca at term 160
+	Line 5908: Mar 13 05:51:31 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 159, index: 2606114] sent MsgVote request to 4bc7141c11bf71da at term 160
+	Line 5909: Mar 13 05:51:31 sn-2 etcd[779]: 60d080439b99d9ca [logterm: 159, index: 2606114] sent MsgVote request to 8296553e8d2c027d at term 160
+	Line 5910: Mar 13 05:51:31 sn-2 etcd[779]: raft.node: 60d080439b99d9ca lost leader 4bc7141c11bf71da at term 160
+	Line 5911: Mar 13 05:51:31 sn-2 etcd[779]: 60d080439b99d9ca received MsgVoteResp from 8296553e8d2c027d at term 160
+	Line 5912: Mar 13 05:51:31 sn-2 etcd[779]: 60d080439b99d9ca [quorum:2] has received 2 MsgVoteResp votes and 0 vote rejections
+	Line 5913: Mar 13 05:51:31 sn-2 etcd[779]: 60d080439b99d9ca became leader at term 160
+	Line 5914: Mar 13 05:51:31 sn-2 etcd[779]: raft.node: 60d080439b99d9ca elected leader 60d080439b99d9ca at term 160
+	Line 5933: Mar 13 05:51:31 sn-2 etcd[779]: lost the TCP streaming connection with peer 4bc7141c11bf71da (stream Message reader)
+	Line 5934: Mar 13 05:51:31 sn-2 etcd[779]: failed to read 4bc7141c11bf71da on stream Message (unexpected EOF)
+	Line 5935: Mar 13 05:51:31 sn-2 etcd[779]: peer 4bc7141c11bf71da became inactive
+	Line 5936: Mar 13 05:51:31 sn-2 etcd[779]: lost the TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 reader)
+	Line 5989: Mar 13 05:51:31 sn-2 etcd[779]: lost the TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 writer)
+	Line 7009: Mar 13 05:51:32 sn-2 etcd[779]: lost the TCP streaming connection with peer 4bc7141c11bf71da (stream Message writer)
+	Line 7165: Mar 13 05:51:32 sn-2 etcd[779]: failed to reach the peerURL(http://mn-0.local:2380) of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: i/o timeout)
+	Line 7166: Mar 13 05:51:32 sn-2 etcd[779]: cannot get the version of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: i/o timeout)
+	Line 8348: Mar 13 05:51:36 sn-2 etcd[779]: failed to reach the peerURL(http://mn-0.local:2380) of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: lookup mn-0.local on [::1]:53: dial udp [::1]:53: i/o timeout)
+	Line 8350: Mar 13 05:51:36 sn-2 etcd[779]: cannot get the version of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: lookup mn-0.local on [::1]:53: dial udp [::1]:53: i/o timeout)
+	Line 9470: Mar 13 05:51:41 sn-2 etcd[779]: failed to reach the peerURL(http://mn-0.local:2380) of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: i/o timeout)
+	Line 9471: Mar 13 05:51:41 sn-2 etcd[779]: cannot get the version of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: i/o timeout)
+	Line 9680: Mar 13 05:51:42 sn-2 etcd[779]: health check for peer 4bc7141c11bf71da could not connect: dial tcp: lookup mn-0.local on [::1]:53: dial udp [::1]:53: i/o timeout
+	Line 10457: Mar 13 05:51:47 sn-2 etcd[779]: failed to reach the peerURL(http://mn-0.local:2380) of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: i/o timeout)
+	Line 10459: Mar 13 05:51:47 sn-2 etcd[779]: cannot get the version of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: i/o timeout)
+	Line 10673: Mar 13 05:51:47 sn-2 etcd[779]: health check for peer 4bc7141c11bf71da could not connect: dial tcp: i/o timeout
+	Line 11783: Mar 13 05:51:52 sn-2 etcd[779]: start to snapshot (applied: 2611196, lastsnap: 2601195)
+	Line 11784: Mar 13 05:51:52 sn-2 etcd[779]: saved snapshot at index 2611196
+	Line 11785: Mar 13 05:51:52 sn-2 etcd[779]: compacted raft log at 2606196
+	Line 11787: Mar 13 05:51:52 sn-2 etcd[779]: failed to reach the peerURL(http://mn-0.local:2380) of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: i/o timeout)
+	Line 11788: Mar 13 05:51:52 sn-2 etcd[779]: cannot get the version of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: i/o timeout)
+	Line 11790: Mar 13 05:51:52 sn-2 etcd[779]: health check for peer 4bc7141c11bf71da could not connect: dial tcp: i/o timeout
+	Line 11791: Mar 13 05:51:52 sn-2 etcd[779]: purged file /mnt/etcd/rcp20.etcd/member/snap/0000000000000097-000000000027b0eb.snap successfully
+	Line 12852: Mar 13 05:51:57 sn-2 etcd[779]: health check for peer 4bc7141c11bf71da could not connect: dial tcp: i/o timeout
+	Line 12913: Mar 13 05:51:57 sn-2 etcd[779]: failed to reach the peerURL(http://mn-0.local:2380) of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: lookup mn-0.local on [::1]:53: dial udp [::1]:53: i/o timeout)
+	Line 12914: Mar 13 05:51:57 sn-2 etcd[779]: cannot get the version of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: lookup mn-0.local on [::1]:53: dial udp [::1]:53: i/o timeout)
+	Line 13853: Mar 13 05:52:02 sn-2 etcd[779]: health check for peer 4bc7141c11bf71da could not connect: dial tcp: lookup mn-0.local on [::1]:53: dial udp [::1]:53: i/o timeout
+	Line 13869: Mar 13 05:52:02 sn-2 etcd[779]: failed to reach the peerURL(http://mn-0.local:2380) of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: lookup mn-0.local on [::1]:53: dial udp [::1]:53: i/o timeout)
+	Line 13870: Mar 13 05:52:02 sn-2 etcd[779]: cannot get the version of member 4bc7141c11bf71da (Get http://mn-0.local:2380/version: dial tcp: lookup mn-0.local on [::1]:53: dial udp [::1]:53: i/o timeout)
+	Line 14331: Mar 13 05:52:04 sn-2 etcd[779]: peer 4bc7141c11bf71da became active
+	Line 14332: Mar 13 05:52:04 sn-2 etcd[779]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 reader)
+	Line 14333: Mar 13 05:52:04 sn-2 etcd[779]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream Message reader)
+	Line 14334: Mar 13 05:52:04 sn-2 etcd[779]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream Message writer)
+	Line 14335: Mar 13 05:52:04 sn-2 etcd[779]: established a TCP streaming connection with peer 4bc7141c11bf71da (stream MsgApp v2 writer)
+	Line 22398: Mar 13 05:52:54 sn-2 etcd[779]: start to snapshot (applied: 2621197, lastsnap: 2611196)
+	Line 22399: Mar 13 05:52:54 sn-2 etcd[779]: saved snapshot at index 2621197
+	Line 22400: Mar 13 05:52:54 sn-2 etcd[779]: compacted raft log at 2616197
+	Line 22772: Mar 13 05:53:22 sn-2 etcd[779]: purged file /mnt/etcd/rcp20.etcd/member/snap/00000000000000a0-000000000027d7fc.snap successfully
+	Line 23485: Mar 13 05:54:19 sn-2 etcd[779]: lost the TCP streaming connection with peer 8296553e8d2c027d (stream MsgApp v2 reader)
+	Line 23486: Mar 13 05:54:19 sn-2 etcd[779]: lost the TCP streaming connection with peer 8296553e8d2c027d (stream Message reader)
+	Line 23487: Mar 13 05:54:19 sn-2 etcd[779]: failed to write 8296553e8d2c027d on stream MsgApp v2 (write tcp 192.168.1.12:2380->192.168.1.14:64704: write: broken pipe)
+	Line 23488: Mar 13 05:54:19 sn-2 etcd[779]: peer 8296553e8d2c027d became inactive
+	Line 23489: Mar 13 05:54:19 sn-2 etcd[779]: lost the TCP streaming connection with peer 8296553e8d2c027d (stream MsgApp v2 writer)
+	Line 23495: Mar 13 05:54:20 sn-2 etcd[779]: lost the TCP streaming connection with peer 8296553e8d2c027d (stream Message writer)
+	Line 23964: Mar 13 05:54:23 sn-2 etcd[779]: failed to reach the peerURL(http://mn-1.local:2380) of member 8296553e8d2c027d (Get http://mn-1.local:2380/version: dial tcp: lookup mn-1.local on [::1]:53: dial udp [::1]:53: i/o timeout)
+	Line 23965: Mar 13 05:54:23 sn-2 etcd[779]: cannot get the version of member 8296553e8d2c027d (Get http://mn-1.local:2380/version: dial tcp: lookup mn-1.local on [::1]:53: dial udp [::1]:53: i/o timeout)
+	Line 24001: Mar 13 05:54:28 sn-2 etcd[779]: failed to reach the peerURL(http://mn-1.local:2380) of member 8296553e8d2c027d (Get http://mn-1.local:2380/version: dial tcp: i/o timeout)
+	Line 24002: Mar 13 05:54:28 sn-2 etcd[779]: cannot get the version of member 8296553e8d2c027d (Get http://mn-1.local:2380/version: dial tcp: i/o timeout)
+	Line 24091: Mar 13 05:54:32 sn-2 etcd[779]: health check for peer 8296553e8d2c027d could not connect: dial tcp: lookup mn-1.local on [::1]:53: dial udp [::1]:53: i/o timeout
+	Line 24105: Mar 13 05:54:33 sn-2 etcd[779]: failed to reach the peerURL(http://mn-1.local:2380) of member 8296553e8d2c027d (Get http://mn-1.local:2380/version: dial tcp: i/o timeout)
+	Line 24106: Mar 13 05:54:33 sn-2 etcd[779]: cannot get the version of member 8296553e8d2c027d (Get http://mn-1.local:2380/version: dial tcp: i/o timeout)
+	Line 24370: Mar 13 05:54:37 sn-2 etcd[779]: health check for peer 8296553e8d2c027d could not connect: dial tcp: i/o timeout
+	Line 24436: Mar 13 05:54:39 sn-2 etcd[779]: peer 8296553e8d2c027d became active
+	Line 24437: Mar 13 05:54:39 sn-2 etcd[779]: established a TCP streaming connection with peer 8296553e8d2c027d (stream Message reader)
+	Line 24438: Mar 13 05:54:39 sn-2 etcd[779]: established a TCP streaming connection with peer 8296553e8d2c027d (stream MsgApp v2 reader)
+	Line 24440: Mar 13 05:54:39 sn-2 etcd[779]: established a TCP streaming connection with peer 8296553e8d2c027d (stream Message writer)
+	Line 24441: Mar 13 05:54:39 sn-2 etcd[779]: established a TCP streaming connection with peer 8296553e8d2c027d (stream MsgApp v2 writer)
+	Line 29200: Mar 13 05:55:27 sn-2 etcd[779]: start to snapshot (applied: 2631198, lastsnap: 2621197)
+	Line 29201: Mar 13 05:55:27 sn-2 etcd[779]: saved snapshot at index 2631198
+	Line 29202: Mar 13 05:55:27 sn-2 etcd[779]: compacted raft log at 2626198

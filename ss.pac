@@ -10,7 +10,15 @@ var rules = [
     [
         [], 
         [
+            "gitbook.io",
+            "googleapis.com",
+            "ethereum.org",
+            "go.googlesource.com",
+            "gobyexample.com",
+            "hub.docker.com",
+            "travis-ci.org",
             "douban.com",
+            "developer.mozilla.org",
             "douban.fm",
             "todoist.com",
             "cnblogs.com",

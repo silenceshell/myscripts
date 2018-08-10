@@ -10,6 +10,7 @@ var rules = [
     [
         [], 
         [
+            "golang.org", 
             "gitbook.io",
             "googleapis.com",
             "ethereum.org",
